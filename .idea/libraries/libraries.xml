@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/libSelenium/testng-7.9.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

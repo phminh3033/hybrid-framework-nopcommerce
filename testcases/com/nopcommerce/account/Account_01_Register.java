@@ -13,6 +13,7 @@ import java.util.Random;
 
 public class Account_01_Register {
     WebDriver driver;
+
     @BeforeClass
     public void beforeClass() {
         driver = new FirefoxDriver();
