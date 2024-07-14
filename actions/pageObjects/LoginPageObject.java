@@ -12,15 +12,17 @@ public class LoginPageObject extends BasePage {
     }
 
     public void enterToEmailTxt(String emailAddress) {
+        waitForElementVisible(driver, LoginPageUI.EMAIL_TXT);
         sendKeyToElement(driver, LoginPageUI.EMAIL_TXT, emailAddress);
     }
 
     public void enterToPasswordTxt(String password) {
+        waitForElementVisible(driver, LoginPageUI.PASSWORD_TXT);
         sendKeyToElement(driver, LoginPageUI.PASSWORD_TXT, password);
     }
 
     public void clickToLoginButton() {
-        waitForElementClickable(driver,LoginPageUI.LOGIN_BTN);
+        waitForElementClickable(driver, LoginPageUI.LOGIN_BTN);
         clickToElement(driver, LoginPageUI.LOGIN_BTN);
     }
 }

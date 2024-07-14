@@ -8,6 +8,26 @@
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-support-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-support-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-chrome-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-chromium-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-devtools-v85-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-edge-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-firefox-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-grid-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-http-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-ie-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-json-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-manager-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-os-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-remote-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-safari-driver-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/slf4j-api-2.0.13-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/Docs/selenium-api-4.22.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../software/testng-7.9.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

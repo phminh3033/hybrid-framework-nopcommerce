@@ -3,8 +3,6 @@ package com.nopcommerce.account;
 import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -17,7 +15,7 @@ import pageObjects.RegisterPageObject;
 import java.time.Duration;
 import java.util.Random;
 
-public class Level_03_PageObject extends BasePage{
+public class Level_03_PageObject extends BasePage {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -30,6 +28,7 @@ public class Level_03_PageObject extends BasePage{
     public void beforeClass() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://demo.nopcommerce.com/");
         driver.manage().window().maximize();
 
         // Mo URL ra o page nao -> Khoi tao page do len
@@ -42,7 +41,7 @@ public class Level_03_PageObject extends BasePage{
         homePage.clickToRegisterLink();
 
         // Tu HomePage click vao Register link mo ra trang RegisterPage
-        registerPage = new RegisterPageObject();
+        registerPage = new RegisterPageObject(driver);
 
         registerPage.clickToRegisterButton();
 
@@ -61,7 +60,7 @@ public class Level_03_PageObject extends BasePage{
         homePage.clickToRegisterLink();
 
         // Tu HomePage click vao Register link mo ra trang RegisterPage
-        registerPage = new RegisterPageObject();
+        registerPage = new RegisterPageObject(driver);
 
         registerPage.enterToFirstNameTxt("Automatic");
         registerPage.enterToLastNameTxt("FC");
@@ -89,7 +88,7 @@ public class Level_03_PageObject extends BasePage{
         homePage.clickToRegisterLink();
 
         // Tu HomePage click vao Register link mo ra trang RegisterPage
-        registerPage = new RegisterPageObject();
+        registerPage = new RegisterPageObject(driver);
 
         registerPage.enterToPasswordTxt("123456");
         registerPage.enterToConfirmPasswordTxt("123");
@@ -106,7 +105,7 @@ public class Level_03_PageObject extends BasePage{
         homePage.clickToRegisterLink();
 
         // Tu HomePage click vao Register link mo ra trang RegisterPage
-        registerPage = new RegisterPageObject();
+        registerPage = new RegisterPageObject(driver);
 
         registerPage.enterToFirstNameTxt("Automatic");
         registerPage.enterToLastNameTxt("FC");
@@ -122,7 +121,7 @@ public class Level_03_PageObject extends BasePage{
     public void User_06_Login_Success() {
         registerPage.clickToNopCommerceLogo();
         //
-        homePage = new HomePageObject(driver);
+        /*homePage = new HomePageObject(driver);
         homePage.clickToLoginLink();
 
         // Tu trang home click vao Login link thi qua trang LoginPage
@@ -133,11 +132,11 @@ public class Level_03_PageObject extends BasePage{
         loginPage.enterToPasswordTxt("123456");
         loginPage.clickToLoginButton();
 
-        homePage = new HomePageObject(driver);
+        homePage = new HomePageObject(driver);*/
         homePage.clickToMyAccountLink();
 
         // Tu trang home click vao MyAccount link thi qua trang CustomerPage
-        customerPage = new CustomerPageObject();
+        customerPage = new CustomerPageObject(driver);
 
         // Verify
         Assert.assertEquals(customerPage.getFirstNameTxtAttributeValue(), "Automatic");
