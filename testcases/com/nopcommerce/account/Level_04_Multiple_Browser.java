@@ -1,20 +1,18 @@
 package com.nopcommerce.account;
 
+import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
-import java.time.Duration;
-import java.util.Random;
-
-public class Level_03_PageObject {
+public class Level_04_Multiple_Browser extends BaseTest {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -23,12 +21,10 @@ public class Level_03_PageObject {
 
     private String emailAddress = getRandomEmail();
 
+    @Parameters("browser")
     @BeforeClass
-    public void beforeClass() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://demo.nopcommerce.com/");
-        driver.manage().window().maximize();
+    public void beforeClass(String browserName) {
+        driver = getBrowserDriver(browserName);
 
         // Mo URL ra o page nao -> Khoi tao page do len
         // Tu page nay chuyen sang page kia -> Khoi tao page do len
@@ -148,10 +144,5 @@ public class Level_03_PageObject {
     @AfterClass
     public void afterClass() {
         driver.quit();
-    }
-
-    public String getRandomEmail() {
-        Random random = new Random();
-        return "auto" + random.nextInt(999) + "@gmail.net";
     }
 }
