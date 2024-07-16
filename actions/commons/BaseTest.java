@@ -1,5 +1,6 @@
 package commons;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,8 @@ public class BaseTest {
     protected WebDriver getBrowserDriver(String browserName) {
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 
-        /*if (browserName.equalsIgnoreCase("firefox")) {
+        /*
+        if (browserName.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browserName.equalsIgnoreCase("chrome")) {
             driver = new ChromeDriver();
@@ -24,8 +26,8 @@ public class BaseTest {
             driver = new EdgeDriver();
         } else {
             throw new RuntimeException("Browser name is not valid");
-        }*/
-
+        }
+        */
 
         /* Enum
         if (browser == BrowserList.FIREFOX) {
@@ -39,6 +41,37 @@ public class BaseTest {
         }
         */
 
+    /*
+        // Selenium 3.x
+        switch (browser) {
+            case FIREFOX:
+                String projectPath = System.getProperty("user.dir");
+                System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+
+                driver = new FirefoxDriver();
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid");
+        }
+    */
+
+    /*
+        // WebDriverManager - Selenium 3.x
+        switch (browser) {
+            case FIREFOX:
+                // WebDriverManager 4.x/5.x (cung dung duoc): Download driver + setting bien moi truong
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+
+                // WebDriverManager 5.x: Download driver + setting bien moi truong + Khoi tao browser
+                driver = WebDriverManager.firefoxdriver().create();
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid");
+        }
+    */
+
+        // SeleniumManager - Selenium 4.x
         switch (browser) {
             case FIREFOX:
                 driver = new FirefoxDriver();
