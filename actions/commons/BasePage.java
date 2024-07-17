@@ -343,7 +343,7 @@ public class BasePage {
                 "return arguments[0].complete && typeof arguments[0].naturalWidth != 'undefined' && arguments[0].naturalWidth > 0", getElement(driver, locator));
     }
 
-    /* Wait */
+    /*------------------------------------------Wait----------------------------------------------*/
 
     public Alert waitForAlterPresent(WebDriver driver) {
         return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.alertIsPresent());
