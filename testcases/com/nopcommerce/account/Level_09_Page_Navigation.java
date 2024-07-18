@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import pageObjects.user.*;
 
 
-public class Level_08_Switch_Page extends BaseTest {
+public class Level_09_Page_Navigation extends BaseTest {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -65,13 +65,13 @@ public class Level_08_Switch_Page extends BaseTest {
     }
 
     @Test
-    public void User_03_Switch_Page() {
+    public void User_03_Page_Navigation() {
         // customer -> address
-        //addressesPage = customerPage.openAddressPage(driver);
+        addressesPage = customerPage.openAddressPage();
         // customer -> order
-        //ordersPage = customerPage.openOrdersPage(driver);
+        ordersPage = customerPage.openOrdersPage();
         // address -> customer
-        //customerPage = addressesPage.openCustomerPage(driver);
+        customerPage = addressesPage.openCustomerPage();
         // address -> order
 
         // order -> customer

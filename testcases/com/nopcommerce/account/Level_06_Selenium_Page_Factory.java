@@ -7,10 +7,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.factory.CustomerPageObject;
-import pageObjects.factory.HomePageObject;
-import pageObjects.factory.LoginPageObject;
-import pageObjects.factory.RegisterPageObject;
+import pageObjects.user.factory.CustomerPageObject;
+import pageObjects.user.factory.HomePageObject;
+import pageObjects.user.factory.LoginPageObject;
+import pageObjects.user.factory.RegisterPageObject;
 
 
 public class Level_06_Selenium_Page_Factory extends BaseTest {

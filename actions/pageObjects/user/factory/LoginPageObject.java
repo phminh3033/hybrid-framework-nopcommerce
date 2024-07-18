@@ -1,4 +1,4 @@
-package pageObjects.factory;
+package pageObjects.user.factory;
 
 import commons.BasePageFactory;
 import org.openqa.selenium.WebDriver;

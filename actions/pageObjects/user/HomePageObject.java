@@ -1,9 +1,9 @@
-package pageObjects;
+package pageObjects.user;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
-import pageUIs.HomePageUI;
+import pageUIs.user.HomePageUI;
 
 public class HomePageObject extends BasePage {
     /*
@@ -32,11 +32,11 @@ public class HomePageObject extends BasePage {
         return PageGeneratorManager.getRegisterPage(driver); // PageManager 3
     }
 
-    public LoginPageObject clickToLoginLink() {
+    public UserLoginPageObject clickToLoginLink() {
         waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
         clickToElement(driver, HomePageUI.LOGIN_LINK);
         // return new LoginPageObject(driver); // PageManager 2
-        return PageGeneratorManager.getLoginPage(driver); // PageManager 3
+        return PageGeneratorManager.getUserLoginPage(driver); // PageManager 3
     }
 
     public CustomerPageObject clickToMyAccountLink() {
@@ -44,5 +44,10 @@ public class HomePageObject extends BasePage {
         clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
         //return new CustomerPageObject(driver); // PageManager 2
         return PageGeneratorManager.getCustomerPage(driver); // PageManager 3
+    }
+
+    public void clickToLogoutLink() {
+        waitForElementClickable(driver, HomePageUI.LOGOUT_LINK);
+        clickToElement(driver, HomePageUI.LOGOUT_LINK);
     }
 }
