@@ -4,10 +4,10 @@
     <test name="Run on Firefox">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.account.Level_07_Page_Manager_3"/>
+            <class name="com.nopcommerce.account.Level_08_Switch_Page"/>
         </classes>
     </test>
-
+<!--
     <test name="Run on Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
@@ -20,5 +20,5 @@
         <classes>
             <class name="com.nopcommerce.account.Level_07_Page_Manager_3"/>
         </classes>
-    </test>
+    </test>-->
 </suite>

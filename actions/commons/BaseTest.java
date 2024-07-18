@@ -95,6 +95,8 @@ public class BaseTest {
         return driver;
     }
 
+    //protected  Void closingBrowser (){}
+
     protected String getRandomEmail() {
         Random random = new Random();
         return "auto" + random.nextInt(999) + "@gmail.net";

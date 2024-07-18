@@ -6,6 +6,10 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.AddressPageObject;
+import pageObjects.CustomerPageObject;
+import pageObjects.OrdersPageObject;
+import pageUIs.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -15,7 +19,7 @@ public class BasePage {
 
     // KHONG can phai khoi tao doi tuong ma van truy cap vao ham
     // Truy cap truc tiep tu pham vi CLASS
-    public static BasePage getBasePage () {
+    public static BasePage getBasePage() {
         return new BasePage();
     }
 
@@ -367,5 +371,25 @@ public class BasePage {
 
     public void waitForElementClickable(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+    }
+
+    /*------------------------------------------Pages----------------------------------------------*/
+
+    public CustomerPageObject openCustomerPage(WebDriver driver) {
+        waitForElementVisible(driver, BasePageUI.CUSTOMER_LINK_TEXT);
+        clickToElement(driver, BasePageUI.CUSTOMER_LINK_TEXT);
+        return PageGeneratorManager.getCustomerPage(driver);
+    }
+
+    public AddressPageObject openAddressPage(WebDriver driver) {
+        waitForElementVisible(driver, BasePageUI.ADDRESS_LINK_TEXT);
+        clickToElement(driver, BasePageUI.ADDRESS_LINK_TEXT);
+        return PageGeneratorManager.getAddressPage(driver);
+    }
+
+    public OrdersPageObject openOrdersPage(WebDriver driver) {
+        waitForElementVisible(driver, BasePageUI.ORDERS_LINK_TEXT);
+        clickToElement(driver, BasePageUI.ORDERS_LINK_TEXT);
+        return PageGeneratorManager.getOrdersPage(driver);
     }
 }
