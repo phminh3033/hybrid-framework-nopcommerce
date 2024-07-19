@@ -14,6 +14,8 @@ import java.util.Set;
 
 public class BasePage {
 
+    private long longTimeout = GlobalConstants.LONG_TIMEOUT;
+
     // KHONG can phai khoi tao doi tuong ma van truy cap vao ham
     // Truy cap truc tiep tu pham vi CLASS
     public static BasePage getBasePage() {
@@ -135,16 +137,37 @@ public class BasePage {
 
     /*------------------------------------------Web Element----------------------------------------------*/
 
+    public By getByLocator(String locatorValue) {
+        By by = null;
+        if (locatorValue.startsWith("xpath=") || locatorValue.startsWith("XPath=") || locatorValue.startsWith("XPATH=") || locatorValue.startsWith("Xpath=")) {
+            by = By.xpath(locatorValue.substring(6));
+        } else if (locatorValue.startsWith("css=") || locatorValue.startsWith("Css=") || locatorValue.startsWith("CSS=")) {
+            by = By.cssSelector(locatorValue.substring(4));
+        } else if (locatorValue.startsWith("id=") || locatorValue.startsWith("Id=") || locatorValue.startsWith("ID=")) {
+            by = By.id(locatorValue.substring(3));
+        } else if (locatorValue.startsWith("name=") || locatorValue.startsWith("Name=") || locatorValue.startsWith("NAME=")) {
+            by = By.name(locatorValue.substring(5));
+        } else if (locatorValue.startsWith("class=") || locatorValue.startsWith("Class=") || locatorValue.startsWith("CLASS=")) {
+            by = By.className(locatorValue.substring(6));
+        } else if (locatorValue.startsWith("tagname=") || locatorValue.startsWith("Tagname=") || locatorValue.startsWith("TAGNAME=")) {
+            by = By.tagName(locatorValue.substring(8));
+        } else {
+            throw new RuntimeException("Locator type is not valid");
+        }
+        System.out.println(by);
+        return by;
+    }
+
     public By getByXpath(String locator) {
         return By.xpath(locator);
     }
 
     public WebElement getElement(WebDriver driver, String locator) {
-        return driver.findElement(getByXpath(locator));
+        return driver.findElement(getByLocator(locator));
     }
 
     public List<WebElement> getListWebElements(WebDriver driver, String locator) {
-        return driver.findElements(getByXpath(locator));
+        return driver.findElements(getByLocator(locator));
     }
 
     public void clickToElement(WebDriver driver, String locator) {
@@ -168,10 +191,10 @@ public class BasePage {
         return new Select(getElement(driver, locator)).isMultiple();
     }
 
-    public void selectItemInDropdown(WebDriver driver, String parentXpath, String childItemXpath, String itemTextExpected) {
-        getElement(driver, parentXpath).click();
+    public void selectItemInDropdown(WebDriver driver, String parentLocator, String childItemLocator, String itemTextExpected) {
+        getElement(driver, parentLocator).click();
         sleepInSecond(1);
-        List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childItemXpath)));
+        List<WebElement> allItems = new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childItemLocator)));
 
         for (WebElement item : allItems) {
             String textOfItem = item.getText();
@@ -245,7 +268,7 @@ public class BasePage {
     /* Frame | iFrame */
     public void switchToIframe(WebDriver driver, String locator) {
         //driver.switchTo().frame(getElement(driver, locator));
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(getByLocator(locator)));
     }
 
     public void backToDefaultContent(WebDriver driver) {
@@ -347,31 +370,31 @@ public class BasePage {
     /*------------------------------------------Wait----------------------------------------------*/
 
     public Alert waitForAlterPresent(WebDriver driver) {
-        return new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.alertIsPresent());
+        return new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.alertIsPresent());
     }
 
     public void waitForElementVisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
 
     public void waitForListElementsVisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfAllElements(getListWebElements(driver, locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.visibilityOfAllElements(getListWebElements(driver, locator)));
     }
 
     public void waitForElementInvisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
     }
 
     public void waitForListElementsInvisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElements(driver, locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElements(driver, locator)));
     }
 
     public void waitForElementClickable(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
     }
 
     public boolean isPageLoadedSuccess(WebDriver driver) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(longTimeout));
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
             @Override

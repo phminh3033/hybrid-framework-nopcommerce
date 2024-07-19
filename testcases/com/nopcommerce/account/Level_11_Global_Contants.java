@@ -1,6 +1,7 @@
 package com.nopcommerce.account;
 
 import commons.BaseTest;
+import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -10,9 +11,11 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.*;
+import pageObjects.user.HomePageObject;
+import pageObjects.user.RegisterPageObject;
+import pageObjects.user.UserLoginPageObject;
 
-public class Level_10_Switch_Role extends BaseTest {
+public class Level_11_Global_Contants extends BaseTest {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -20,16 +23,15 @@ public class Level_10_Switch_Role extends BaseTest {
     private AdminLoginPageObject adminLoginPage;
     private AdminDashboardPageObject adminDashboardPage;
 
-    private String adminUrl, endUserUrl;
+    private String adminUrl = GlobalConstants.DEV_ADMIN_URL;
+    private String endUserUrl = GlobalConstants.DEV_USER_URL;
 
     private String emailAddress = getRandomEmail();
 
-    @Parameters({"browser", "adminUrl", "endUserUrl"})
+    @Parameters("browser")
     @BeforeClass
-    public void beforeClass(String browserName, String adminUrl, String endUserUrl) {
+    public void beforeClass(String browserName) {
         driver = getBrowserDriver(browserName, endUserUrl);
-        this.adminUrl = adminUrl;
-        this.endUserUrl = endUserUrl;
         homePage = PageGeneratorManager.getHomePage(driver);
     }
 
@@ -56,7 +58,7 @@ public class Level_10_Switch_Role extends BaseTest {
 
         adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 
-        adminDashboardPage = adminLoginPage.loginToAdmin("admin@yourstore.com", "admin");
+        adminDashboardPage = adminLoginPage.loginToAdmin(GlobalConstants.DEV_ADMIN_USERNAME, GlobalConstants.DEV_ADMIN_PASS);
         adminDashboardPage.isPageLoadedSuccess(driver);
     }
 
