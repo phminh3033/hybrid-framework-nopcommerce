@@ -1,4 +1,4 @@
-package com.jquery.table;
+package com.techpanda.table;
 
 import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Level_13_Handle_DataTable extends BaseTest {
+public class Level_13_Handle_DataTable_TechPanda extends BaseTest {
     WebDriver driver;
     HomePageObject homePage;
     List<String> allValuesUI = new ArrayList<String>();
@@ -110,7 +110,7 @@ public class Level_13_Handle_DataTable extends BaseTest {
         homePage.enterToTxtByColNameAndRowIndex("Company", "3", "dsfsdfdsfd");
 
         // Select Dropdown
-        homePage.selectDropdownByColNameAndRowIndex("Country", "2", "Japan");
+        homePage.selectDropdownByColNameAndRowIndex("Country","2", "Japan");
 
         // Click checkbox
         homePage.selectCheckboxByColNameAndRowIndex("NPO?", "2");
