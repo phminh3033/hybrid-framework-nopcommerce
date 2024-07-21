@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageUIs.user.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -180,6 +181,10 @@ public class BasePage {
 
     public void clickToElement(WebDriver driver, String locator) {
         getElement(driver, locator).click();
+    }
+
+    public void clickToElement(WebDriver driver, WebElement element) {
+        element.click();
     }
 
     public void clickToElement(WebDriver driver, String locator, String... restParams) {
@@ -428,16 +433,20 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.visibilityOfAllElements(getListWebElements(driver, locator)));
     }
 
-    public void waitForElementInvisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
+    public boolean waitForElementInvisible(WebDriver driver, String locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
     }
 
-    public void waitForListElementsInvisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElements(driver, locator)));
+    public boolean waitForListElementsInvisible(WebDriver driver, String locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElements(driver, locator)));
     }
 
     public void waitForElementClickable(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
+    }
+
+    public void waitForElementClickable(WebDriver driver, WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForElementClickable(WebDriver driver, String locator, String... restParams) {
@@ -461,6 +470,18 @@ public class BasePage {
             }
         };
         return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
+    }
+
+    public void upLoadMultipleFiles(WebDriver driver, String... fileNames) {
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for (String file : fileNames) {
+            fullFileName = fullFileName + filePath + file + "\n";
+        }
+        fullFileName = fullFileName.trim();
+
+        // KHONG dung sendKeyToElement() vi co clear() -> Se ERROR khi su dung
+        getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
     }
 
 }
