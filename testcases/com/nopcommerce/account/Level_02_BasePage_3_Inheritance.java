@@ -12,6 +12,11 @@ import java.time.Duration;
 import java.util.Random;
 
 public class Level_02_BasePage_3_Inheritance extends BasePage{
+     /*
+     * Vi da extends BasePage nen co the goi truc tiep ham cua BasePage
+     * + KHONG can khoi tao - Level_02_BasePage_1_Init
+     * + KHONG can goi thong qua doi tuong  - Level_02_BasePage_2_Static
+     */
     WebDriver driver;
 
     @BeforeClass

@@ -9,7 +9,7 @@
         <parameter name="endUserUrl" value="https://demo.nopcommerce.com"/>-->
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.account.Level_15_Assert_Verify"/>
+            <class name="com.nopcommerce.account.Level_16_Log"/>
         </classes>
     </test>
     <!--

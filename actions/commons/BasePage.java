@@ -17,8 +17,10 @@ public class BasePage {
 
     private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 
-    // KHONG can phai khoi tao doi tuong ma van truy cap vao ham
+    // Ham KHOI TAO chinh no
+    // static: KHONG can phai khoi tao doi tuong o CLASS ma van truy cap vao ham duoc
     // Truy cap truc tiep tu pham vi CLASS
+    // Apply for Level_02_BasePage_2_Static
     public static BasePage getBasePage() {
         return new BasePage();
     }
@@ -155,7 +157,7 @@ public class BasePage {
         } else {
             throw new RuntimeException("Locator type is not valid");
         }
-        System.out.println(by);
+        //System.out.println(by);
         return by;
     }
 

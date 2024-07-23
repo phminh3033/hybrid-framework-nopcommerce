@@ -13,6 +13,8 @@ import java.util.Random;
 
 public class Level_02_BasePage_2_Static {
     WebDriver driver;
+
+    // BasePage: Dung tu pham vi cua CLASS
     private BasePage basePage = BasePage.getBasePage(); // Singleton Pattern
 
     @BeforeClass
@@ -24,6 +26,8 @@ public class Level_02_BasePage_2_Static {
 
     @Test
     public void Register_01_Empty_data() {
+
+        // basePage: Dung tu pham vi cua OBJECT de goi ham ben trong basePage Object
         basePage.openPageUrl(driver,"https://demo.nopcommerce.com/");
         basePage.clickToElement(driver,"//a[@class='ico-register']");
         basePage.clickToElement(driver,"//button[@id='register-button']");
@@ -81,7 +85,6 @@ public class Level_02_BasePage_2_Static {
         basePage.clickToElement(driver,"//button[@id='register-button']");
         Assert.assertEquals(basePage.getElementText(driver, "//div[@class='result']"), "Your registration completed");
     }
-
 
     @AfterClass
     public void afterClass() {

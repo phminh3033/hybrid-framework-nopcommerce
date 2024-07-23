@@ -20,7 +20,7 @@ public class Level_02_BasePage_1_Init {
     @BeforeClass
     public void beforeClass() {
         driver = new ChromeDriver();
-        basePage = new BasePage();
+        //basePage = new BasePage();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
