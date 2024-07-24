@@ -16,6 +16,7 @@
     <orderEntry type="library" name="selenium-api-4.22.0-sources" level="project" />
     <orderEntry type="library" name="WebDriverManager_5.6.2" level="project" />
     <orderEntry type="library" name="assertj-core-3.24.2" level="project" />
-    <orderEntry type="library" name="log4j-api-2.19.0" level="project" />
+    <orderEntry type="library" name="log4j-api-2.23.1" level="project" />
+    <orderEntry type="library" name="reportNG-1.1.4" level="project" />
   </component>
 </module>

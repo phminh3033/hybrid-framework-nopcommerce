@@ -12,12 +12,19 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
-    WebDriver driver;
+    private WebDriver driver;
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     protected final Logger log;
 
     public BaseTest() {
@@ -234,5 +241,34 @@ public class BaseTest {
             Reporter.getCurrentTestResult().setThrowable(e);
         }
         return pass;
+    }
+
+
+    /*------------------------------------------Delete report img screenshot----------------------------------------------*/
+    @BeforeSuite
+    public void deleteFileInReport() {
+        // Remove all file in ReportNG screenshot (image)
+        deleteAllFileInFolder("reportNGScreenshot");
+
+        // Remove all file in Allure attachment (json file)
+        deleteAllFileInFolder("allure-json");
+    }
+
+    public void deleteAllFileInFolder(String folderName) {
+        try {
+            String pathFolderDownload = GlobalConstants.RELATIVE_PROJECT_PATH + File.separator + folderName;
+            File file = new File(pathFolderDownload);
+            File[] listOfFiles = file.listFiles();
+            if (listOfFiles.length != 0) {
+                for (int i = 0; i < listOfFiles.length; i++) {
+                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
+                        System.out.println(listOfFiles[i].isFile());
+                        new File(listOfFiles[i].toString()).delete();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
     }
 }
