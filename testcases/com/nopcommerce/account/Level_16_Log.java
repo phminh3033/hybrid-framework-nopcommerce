@@ -15,10 +15,7 @@ public class Level_16_Log extends BaseTest {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
-    private UserLoginPageObject loginPage;
     private CustomerPageObject customerPage;
-    private AddressPageObject addressesPage;
-    private OrdersPageObject ordersPage;
 
     private String firstName, lastName, password;
     private String emailAddress = getRandomEmail();

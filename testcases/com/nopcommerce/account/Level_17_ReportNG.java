@@ -15,10 +15,6 @@ public class Level_17_ReportNG extends BaseTest {
     WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
-    private UserLoginPageObject loginPage;
-    private CustomerPageObject customerPage;
-    private AddressPageObject addressesPage;
-    private OrdersPageObject ordersPage;
 
     private String firstName, lastName, password;
     private String emailAddress = getRandomEmail();
@@ -37,7 +33,7 @@ public class Level_17_ReportNG extends BaseTest {
     @Test
     public void User_01_Register_Validate() {
         log.info("Register - Step 1: Verify Register link is displayed");
-        Assert.assertFalse(homePage.isRegisterLinkDisplayed());
+        verifyFalse(homePage.isRegisterLinkDisplayed());
 
         log.info("Register - Step 2: Click to Register link");
         registerPage = homePage.clickToRegisterLink();
@@ -53,7 +49,7 @@ public class Level_17_ReportNG extends BaseTest {
     }
 
     @Test
-    public void User_02_Login_Success() {
+    public void User_02_Register_Success() {
         log.info("Register - Step 6: Enter to First Name txt is " + firstName);
         registerPage.enterToFirstNameTxt(firstName);
 

@@ -18,5 +18,6 @@
     <orderEntry type="library" name="assertj-core-3.24.2" level="project" />
     <orderEntry type="library" name="log4j-api-2.23.1" level="project" />
     <orderEntry type="library" name="reportNG-1.1.4" level="project" />
+    <orderEntry type="library" name="extentreports-5.1.0" level="project" />
   </component>
 </module>
