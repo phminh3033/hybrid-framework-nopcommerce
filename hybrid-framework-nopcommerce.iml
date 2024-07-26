@@ -19,5 +19,6 @@
     <orderEntry type="library" name="log4j-api-2.23.1" level="project" />
     <orderEntry type="library" name="reportNG-1.1.4" level="project" />
     <orderEntry type="library" name="extentreports-5.1.0" level="project" />
+    <orderEntry type="library" name="allure-testNG-2.24.0" level="project" />
   </component>
 </module>
