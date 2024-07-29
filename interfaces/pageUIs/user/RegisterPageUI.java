@@ -28,7 +28,6 @@ public class RegisterPageUI {
      *  Man hinh nao quan ly ELEMENT rieng cua man hinh do
      * */
 
-    public static final String NOPCOMMERCE_LOGO = "Xpath=//div[@class='header-logo']//img";
     public static final String FIRSTNAME_TEXTBOX = "css=input[id='FirstName']";
     public static final String LASTNAME_TEXTBOX = "CSS=input[id='LastName']";
     public static final String EMAIL_TEXTBOX = "Css=input[id='Email']";

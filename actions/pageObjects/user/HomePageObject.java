@@ -1,12 +1,13 @@
 package pageObjects.user;
 
+import commons.BaseElement;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.HomePageUI;
 
-public class HomePageObject extends BasePage {
+public class HomePageObject extends BaseElement {
     /*
         BasePage basePage = new BasePage(); // 2
     */
@@ -14,6 +15,7 @@ public class HomePageObject extends BasePage {
     WebDriver driver; // 1 & 3
 
     public HomePageObject(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 

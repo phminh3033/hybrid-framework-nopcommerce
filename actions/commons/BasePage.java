@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageUIs.user.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
@@ -512,7 +511,7 @@ public class BasePage {
         fullFileName = fullFileName.trim();
 
         // KHONG dung sendKeyToElement() vi co clear() -> Se ERROR khi su dung
-        getElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+        getElement(driver, BaseElementUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
     }
 
 }

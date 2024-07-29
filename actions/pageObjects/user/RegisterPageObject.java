@@ -1,15 +1,16 @@
 package pageObjects.user;
 
+import commons.BaseElement;
 import commons.BasePage;
-import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.RegisterPageUI;
 
-public class RegisterPageObject extends BasePage {
+public class RegisterPageObject extends BaseElement {
     WebDriver driver;
 
     public RegisterPageObject(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 
@@ -41,14 +42,6 @@ public class RegisterPageObject extends BasePage {
     public String getConfirmPasswordErrorMsgText() {
         waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MSG);
         return getElementText(driver, RegisterPageUI.CONFIRM_PASSWORD_ERROR_MSG);
-    }
-
-    @Step("Click to NOPCOMMERCE_LOGO")
-    public HomePageObject clickToNopCommerceLogo() {
-        waitForElementClickable(driver, RegisterPageUI.NOPCOMMERCE_LOGO);
-        clickToElement(driver, RegisterPageUI.NOPCOMMERCE_LOGO);
-        //return new HomePageObject(driver); // PageManager 2
-        return PageGeneratorManager.getHomePage(driver); // PageManager 3
     }
 
     @Step("Enter to FIRSTNAME_TEXTBOX with value is {0}")
