@@ -16,6 +16,7 @@ import java.util.Set;
 public class BasePage {
 
     private long longTimeout = GlobalConstants.LONG_TIMEOUT;
+    private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 
     // Ham KHOI TAO chinh no
     // static: KHONG can phai khoi tao doi tuong o CLASS ma van truy cap vao ham duoc
@@ -141,7 +142,7 @@ public class BasePage {
     /*------------------------------------------Web Element----------------------------------------------*/
 
     public By getByLocator(String locatorValue) {
-        By by = null;
+        By by;
         if (locatorValue.startsWith("xpath=") || locatorValue.startsWith("XPath=") || locatorValue.startsWith("XPATH=") || locatorValue.startsWith("Xpath=")) {
             by = By.xpath(locatorValue.substring(6));
         } else if (locatorValue.startsWith("css=") || locatorValue.startsWith("Css=") || locatorValue.startsWith("CSS=")) {
@@ -298,12 +299,40 @@ public class BasePage {
         }
     }
 
+    /**
+     * Case 1: Element co hien thi tren UI va CO trong HTML -> isDisplayed tra ve true
+     * Case 2: Element KHONG hien thi tren UI va CO trong HTML -> isDisplayed tra ve false
+     */
     public boolean isElementDisplayed(WebDriver driver, String locator) {
         return getElement(driver, locator).isDisplayed();
     }
 
     public boolean isElementDisplayed(WebDriver driver, String locator, String... restParams) {
         return getElement(driver, getDynamicLocator(locator, restParams)).isDisplayed();
+    }
+
+    public void setImplicitWait(WebDriver driver, long timeout) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
+    }
+
+    public boolean isElementUnDisplayed(WebDriver driver, String locator) {
+        setImplicitWait(driver, shortTimeout); // Truoc khi tim element set ngan
+        List<WebElement> elements = getListWebElements(driver, locator);
+        setImplicitWait(driver, longTimeout); // Tra lai timeout cho cac step con lai
+
+        if (elements.size() > 0 && elements.get(0).isDisplayed()) {
+            // Case 1: Element co hien thi tren UI va CO trong HTML -> isDisplayed tra ve true
+            System.out.println("Case 1: Element co hien thi tren UI va CO trong HTML -> isDisplayed tra ve true");
+            return false;
+        } else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+            // Case 2: Element KHONG hien thi tren UI va CO trong HTML -> isDisplayed tra ve false
+            System.out.println("Case 2: Element KHONG hien thi tren UI va CO trong HTML -> isDisplayed tra ve false");
+            return true;
+        } else {
+            // Case 3: Element KHONG hien thi tren UI va KHONG trong HTML -> isDisplayed tra ve true
+            System.out.println("Case 3: Element KHONG hien thi tren UI va KHONG trong HTML -> isDisplayed tra ve true");
+            return true;
+        }
     }
 
     public boolean isElementSelected(WebDriver driver, String locator) {

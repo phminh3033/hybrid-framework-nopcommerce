@@ -1,10 +1,11 @@
 <component name="libraryTable">
-  <library name="allure-testNG-2.24.0">
+  <library name="allurereport">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/allure-java-commons-2.24.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/allure-model-2.24.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/allure-test-filter-2.24.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/allure-testng-2.24.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libAllureReport/aspectjweaver-1.9.22.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/bsh-2.0b6.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/jcommander-1.72.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libAllureReport/slf4j-api-1.7.36.jar!/" />
