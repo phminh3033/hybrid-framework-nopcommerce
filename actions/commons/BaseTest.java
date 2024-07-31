@@ -16,6 +16,7 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Random;
 
@@ -195,7 +196,58 @@ public class BaseTest {
         return driver;
     }
 
-    //protected  Void closingBrowser (){}
+    protected void closingBrowser() {
+        String cmd = null;
+        try {
+            String osName = GlobalConstants.OS_NAME.toLowerCase();
+            log.info("OS name = " + osName);
+
+            String driverInstanceName = driver.toString().toLowerCase();
+            log.info("Driver instance name = " + driverInstanceName);
+
+            String browserDriverName = null;
+
+            if (driverInstanceName.contains("chrome")) {
+                browserDriverName = "chromedriver";
+            } else if (driverInstanceName.contains("internetexplorer")) {
+                browserDriverName = "IEDriverServer";
+            } else if (driverInstanceName.contains("firefox")) {
+                browserDriverName = "geckodriver";
+            } else if (driverInstanceName.contains("edge")) {
+                browserDriverName = "msedgedriver";
+            } else if (driverInstanceName.contains("opera")) {
+                browserDriverName = "operadriver";
+            } else {
+                browserDriverName = "safaridriver";
+            }
+
+            if (osName.contains("window")) {
+                cmd = "taskkill /F /FI 'IMAGENAME eq " + browserDriverName + "*'";
+            } else {
+                cmd = "pkill " + browserDriverName;
+            }
+
+            log.info("Command line: " + cmd);
+
+            // 1 - Close browser
+            if (driver != null) {
+                driver.manage().deleteAllCookies(); // IE khi close browser r nhung van luu cookies
+                driver.quit();
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        } finally { // finally: Luon dc chay cho du vao try hay catch
+            // 2 - Quit driver (executable)
+            try {
+                Process process = Runtime.getRuntime().exec(cmd);
+                process.waitFor();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     protected String getRandomEmail() {
         Random random = new Random();
