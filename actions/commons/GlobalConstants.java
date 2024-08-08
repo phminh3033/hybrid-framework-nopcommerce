@@ -28,4 +28,7 @@ public class GlobalConstants {
     public static final String UPLOAD_PATH = RELATIVE_PROJECT_PATH + File.separator + "uploadFiles" + File.separator;
     public static final String DOWNLOAD_PATH = RELATIVE_PROJECT_PATH + File.separator + "downloadFiles" + File.separator;
     public static final String REPORT_IMG_PATH = RELATIVE_PROJECT_PATH + File.separator + "reportNGScreenshot" + File.separator;
+
+    public static final String ORANGE_HRM_ADMIN_USERNAME = "autofczyy";
+    public static final String ORANGE_HRM_ADMIN_PASSWORD = "M3gf46@#4$df";
 }

@@ -21,9 +21,9 @@ public class BasePage {
     // static: KHONG can phai khoi tao doi tuong o CLASS ma van truy cap vao ham duoc
     // Truy cap truc tiep tu pham vi CLASS
     // Apply for Level_02_BasePage_2_Static
-    public static BasePage getBasePage() {
+    /*public static BasePage getBasePage() {
         return new BasePage();
-    }
+    }*/
 
     /*------------------------------------------Web Browser----------------------------------------------*/
 
@@ -338,6 +338,10 @@ public class BasePage {
         return getElement(driver, locator).isSelected();
     }
 
+    public boolean isElementSelected(WebDriver driver, String locator, String... restParams) {
+        return getElement(driver, getDynamicLocator(locator, restParams)).isSelected();
+    }
+
     public boolean isElementEnabled(WebDriver driver, String locator) {
         return getElement(driver, locator).isEnabled();
     }
@@ -409,6 +413,11 @@ public class BasePage {
 
     public void clickToElementByJS(WebDriver driver, String locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, locator));
+        sleepInSecond(3);
+    }
+
+    public void clickToElementByJS(WebDriver driver, String locator, String... restParams) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, getDynamicLocator(locator, restParams)));
         sleepInSecond(3);
     }
 
