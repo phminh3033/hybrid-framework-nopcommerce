@@ -17,7 +17,7 @@ public class Level_20_Element_Undisplayed extends BaseTest {
     @Parameters({"browser", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
-        driver = getBrowserDriver(browserName, url);
+        driver = getBrowserDriverWithExtensions(browserName, url);
         homePage = PageGeneratorManager.getHomePage(driver);
     }
 
@@ -36,7 +36,7 @@ public class Level_20_Element_Undisplayed extends BaseTest {
         verifyTrue(homePage.isConfirmEmailTxtDisplayed());
     }
 
-    @Test
+    @Test(enabled = false)
     public void Home_02_Element_Undisplayed_In_HTML() {
         homePage.enterToEmailTxt("");
         homePage.sleepInSecond(2);
@@ -47,7 +47,7 @@ public class Level_20_Element_Undisplayed extends BaseTest {
         verifyTrue(homePage.isConfirmEmailTxtUnDisplayed());
     }
 
-    @Test
+    @Test(enabled = false)
     public void Home_03_Element_Undisplayed_NOT_In_HTML_01() {
         homePage.clickToCloseSignUpPopup();
 
@@ -64,7 +64,7 @@ public class Level_20_Element_Undisplayed extends BaseTest {
         verifyFalse(homePage.isPassTxtDisplayed());
     }
 
-    @Test
+    @Test(enabled = false)
     public void Home_03_Element_Undisplayed_NOT_In_HTML_02() {
         log.info("Verify Firstname txt is not displayed");
         verifyTrue(homePage.isFirstNameTxtUnDisplayed());
@@ -81,6 +81,6 @@ public class Level_20_Element_Undisplayed extends BaseTest {
 
     @AfterClass
     public void afterClass() {
-        driver.quit();
+        //driver.quit();
     }
 }

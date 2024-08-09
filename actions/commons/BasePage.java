@@ -21,9 +21,9 @@ public class BasePage {
     // static: KHONG can phai khoi tao doi tuong o CLASS ma van truy cap vao ham duoc
     // Truy cap truc tiep tu pham vi CLASS
     // Apply for Level_02_BasePage_2_Static
-    /*public static BasePage getBasePage() {
+    public static BasePage getBasePage() {
         return new BasePage();
-    }*/
+    }
 
     /*------------------------------------------Web Browser----------------------------------------------*/
 
