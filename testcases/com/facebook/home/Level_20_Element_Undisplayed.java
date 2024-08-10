@@ -17,7 +17,7 @@ public class Level_20_Element_Undisplayed extends BaseTest {
     @Parameters({"browser", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
-        driver = getBrowserDriver(browserName, url);
+        driver = getBrowserDriverCapabilities(browserName, url);
         homePage = PageGeneratorManager.getHomePage(driver);
     }
 

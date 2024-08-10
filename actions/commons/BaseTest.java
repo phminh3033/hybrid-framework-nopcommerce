@@ -224,7 +224,7 @@ public class BaseTest {
         return driver;
     }
 
-    protected WebDriver getBrowserDriverWithDisable(String browserName, String url) {
+    protected WebDriver getBrowserDriverCapabilities(String browserName, String url) {
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 
         /*
@@ -285,7 +285,13 @@ public class BaseTest {
         switch (browser) {
             case FIREFOX:
                 FirefoxOptions ffOptions = new FirefoxOptions();
-                ffOptions.addPreference("intl.accept_languages","vi-vn,vi");
+
+                // config Download file KHONG hien download dialog khi bam nut down
+                // Nhieu qua, luoi -> xem topic 106
+
+                ffOptions.addPreference("intl.accept_languages", "vi-vn,vi");
+                ffOptions.addArguments("--private"); // Run on an danh mode
+
                 driver = new FirefoxDriver(ffOptions);
                 break;
             case CHROME:
@@ -294,18 +300,28 @@ public class BaseTest {
                 chPrefs.put("credentials_enable_service", false);
                 chPrefs.put("profile.password_manager_enabled", false); // Tat luu password
                 chPrefs.put("autofill.profile_enabled", false); // Tat autofill suggestion
+                chPrefs.put("autofill.credit_card_enable",false); // Tat save CARD info
+
+                // Download file KHONG hien download dialog khi bam nut down
+                chPrefs.put("profile.default_content_settings.popups", 0);
+                chPrefs.put("download.default_directory", GlobalConstants.DOWNLOAD_PATH);
 
                 ChromeOptions chOptions = new ChromeOptions();
 
                 chOptions.addArguments("--lang=fr");
                 chOptions.addArguments("--disable-notifications"); // tat thong bao
                 chOptions.addArguments("--disable-geolocation"); // tat thong bao dinh vi vi tri
+                //chOptions.addArguments("--incognito"); // Run on an danh mode
+
+                // Run with Profile
+                chOptions.addArguments("user-data-dir=C:\\Users\\minh.pham.h\\AppData\\Local\\Google\\Chrome\\User Data");
+                chOptions.addArguments("profile-directory=Profile 6");
 
                 // tat thong bao trinh duyet dang chay o auto mode
                 chOptions.setExperimentalOption("useAutomationExtension", false);
                 chOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-                chOptions.setExperimentalOption("prefs",chPrefs); // Tat thong bao luu thong tin: dia chi, sdt, pass,...
+                chOptions.setExperimentalOption("prefs", chPrefs); // Tat cac thong bao config o tren
 
                 driver = new ChromeDriver(chOptions);
                 break;
@@ -315,17 +331,23 @@ public class BaseTest {
                 edgePrefs.put("credentials_enable_service", false);
                 edgePrefs.put("profile.password_manager_enabled", false); // Tat luu password
                 edgePrefs.put("autofill.profile_enabled", false); // Tat autofill suggestion
+                edgePrefs.put("autofill.credit_card_enable",false); // Tat save CARD info
+
+                // Download file KHONG hien download dialog khi bam nut down
+                edgePrefs.put("profile.default_content_settings.popups", 0);
+                edgePrefs.put("download.default_directory", GlobalConstants.DOWNLOAD_PATH);
 
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--lang=fr");
                 edgeOptions.addArguments("--disable-notifications"); // tat thong bao
                 edgeOptions.addArguments("--disable-geolocation"); // tat thong bao dinh vi vi tri
+                edgeOptions.addArguments("--inprivate"); // Run on an danh mode
 
                 // tat thong bao trinh duyet dang chay o auto mode
                 edgeOptions.setExperimentalOption("useAutomationExtension", false);
                 edgeOptions.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-                edgeOptions.setExperimentalOption("prefs",edgePrefs); // Tat thong bao luu thong tin: dia chi, sdt, pass,...
+                edgeOptions.setExperimentalOption("prefs", edgePrefs); // Tat cac thong bao config o tren
 
                 driver = new EdgeDriver(edgeOptions);
                 break;
