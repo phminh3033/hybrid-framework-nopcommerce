@@ -29,6 +29,10 @@ bin/
 .DS_Store
 
 ###
+allure-json/
 reportHTML/
 browserLogs/
 downloadFiles/
+extentReport/
+test-output/
+logs/
