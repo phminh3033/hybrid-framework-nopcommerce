@@ -19,5 +19,6 @@
     <orderEntry type="library" name="libMain" level="project" />
     <orderEntry type="library" name="allurereport" level="project" />
     <orderEntry type="library" name="extentreports-5.1.0" level="project" />
+    <orderEntry type="library" name="javaFaker1.0.2" level="project" />
   </component>
 </module>

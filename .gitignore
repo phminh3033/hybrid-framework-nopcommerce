@@ -35,4 +35,4 @@ browserLogs/
 downloadFiles/
 extentReport/
 test-output/
-logs/
+log4jLogs/

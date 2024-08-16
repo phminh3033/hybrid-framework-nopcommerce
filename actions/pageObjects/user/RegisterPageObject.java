@@ -1,7 +1,7 @@
 package pageObjects.user;
 
 import commons.BaseElement;
-import commons.BasePage;
+import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.RegisterPageUI;
@@ -78,5 +78,11 @@ public class RegisterPageObject extends BaseElement {
     public String getRegisterSuccessMsgTxt() {
         waitForElementVisible(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
         return getElementText(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
+    }
+
+    public HomePageObject clickToLogoutBtn() {
+        waitForElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
+        clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+        return PageGeneratorManager.getHomePage(driver);
     }
 }

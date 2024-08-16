@@ -40,4 +40,5 @@ public class RegisterPageUI {
     public static final String CONFIRM_PASSWORD_ERROR_MSG = "id=ConfirmPassword-error";
     public static final String REGISTRATION_COMPLETED_MSG = "class=result";
     public static final String REGISTER_BUTTON = "id=register-button";
+    public static final String LOGOUT_LINK = "Class=ico-logout";
 }
