@@ -1,4 +1,4 @@
-package com.nopcommerce.account;
+package staticVariable;
 
 public class PaymentObject {
     public static class BillingAddress {

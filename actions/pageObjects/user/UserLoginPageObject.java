@@ -1,10 +1,10 @@
 package pageObjects.user;
 
 import commons.BaseElement;
-import commons.BasePage;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.UserLoginPageUI;
+import pojoData.nopcommerce.UserInfo;
 
 public class UserLoginPageObject extends BaseElement {
     WebDriver driver;
@@ -34,6 +34,12 @@ public class UserLoginPageObject extends BaseElement {
     public HomePageObject loginToUser(String emailAddress, String password) {
         enterToEmailTxt(emailAddress);
         enterToPasswordTxt(password);
+        return clickToLoginButton();
+    }
+
+    public HomePageObject loginToApplication(UserInfo userInfo) {
+        enterToEmailTxt(userInfo.getEmailAddress());
+        enterToPasswordTxt(userInfo.getPassword());
         return clickToLoginButton();
     }
 }

@@ -1,6 +1,7 @@
 package com.nopcommerce.account;
 
 import com.aventstack.extentreports.Status;
+import staticVariable.UserObject;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ import reportConfig.ExtentTestManagerV5;
 import java.lang.reflect.Method;
 
 
-public class Level_26_Data_In_Internal extends BaseTest {
+public class Level_26_Data_In_Internal_Static extends BaseTest {
     private WebDriver driver;
     private String browserName;
     private UserLoginPageObject userLoginPage;

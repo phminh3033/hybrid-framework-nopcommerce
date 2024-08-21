@@ -1,4 +1,4 @@
-package com.nopcommerce.account;
+package staticVariable;
 
 public class UserObject {
     public static final String EMAIL_ADDRESS = "john";
