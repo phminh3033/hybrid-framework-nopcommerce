@@ -1,0 +1,10 @@
+{
+  "firstname": "John",
+  "lastname": "Quit",
+  "email": "john.quit",
+  "password": "123456",
+  "payment": {
+    "visa": "4585-4683-2646-2161",
+    "ccv": "245"
+  }
+}

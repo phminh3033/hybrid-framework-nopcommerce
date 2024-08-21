@@ -542,6 +542,11 @@ public class BaseTest {
         return "auto" + random.nextInt(999) + "@gmail.net";
     }
 
+    protected String getRandomEmail(String prefix) {
+        Random random = new Random();
+        return prefix + random.nextInt(999) + "@gmail.net";
+    }
+
     protected boolean verifyTrue(boolean condition) {
         boolean pass = true;
         try {
