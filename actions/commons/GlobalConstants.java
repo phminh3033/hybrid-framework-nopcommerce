@@ -31,6 +31,7 @@ public class GlobalConstants {
     public static final String BROWSER_LOGS = RELATIVE_PROJECT_PATH + File.separator + "browserLogs" + File.separator;
     public static final String REPORT_IMG_PATH = RELATIVE_PROJECT_PATH + File.separator + "reportNGScreenshot" + File.separator;
     public static final String RESOURCE_PATH = RELATIVE_PROJECT_PATH + File.separator + "resources" + File.separator;
+    public static final String DATA_TEST_PATH = RELATIVE_PROJECT_PATH + File.separator + "dataTest" + File.separator;
 
     public static final String ORANGE_HRM_ADMIN_USERNAME = "autofczyy";
     public static final String ORANGE_HRM_ADMIN_PASSWORD = "M3gf46@#4$df";

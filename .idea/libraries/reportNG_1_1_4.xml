@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="reportNG-1.1.4">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/libReportNG/commons-collections-3.2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/libReportNG/commons-io-2.6.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libReportNG/guice-3.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libReportNG/reportng-1.1.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/libReportNG/velocity-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libPOI/commons-io-2.15.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libReportNG/commons-collections-3.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

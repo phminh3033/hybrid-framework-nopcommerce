@@ -22,5 +22,6 @@
     <orderEntry type="library" name="extentreports-5.1.0" level="project" />
     <orderEntry type="library" name="javaFaker1.0.2" level="project" />
     <orderEntry type="library" name="jackson-2.17.1" level="project" />
+    <orderEntry type="library" name="poi-5.2.5" level="project" />
   </component>
 </module>
