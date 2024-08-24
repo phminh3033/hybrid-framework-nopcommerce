@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab Web">
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <!--<listener class-name="reportConfig.AllureTestListener"/>-->
+        <!--<listener class-name="reportConfig.ExtentTestListenerV5"/>-->
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+
+    <parameter name="url" value="https://www.saucedemo.com/"/>
+
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.saucelab.sort.Level_31_Sort_ASC_DESC"/>
+        </classes>
+    </test>
+</suite>
