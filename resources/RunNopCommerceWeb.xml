@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="NopCommerce Web">
+<suite name="NopCommerce Web" parallel="methods" thread-count="4">
     <listeners>
         <listener class-name="commons.MethodListener"/>
         <!--<listener class-name="reportConfig.AllureTestListener"/>-->
-        <listener class-name="reportConfig.ExtentTestListenerV5"/>
+        <!--<listener class-name="reportConfig.ExtentTestListenerV5"/>-->
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
@@ -19,7 +19,7 @@
     <test name="Run on Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.nopcommerce.account.Level_29_Data_External_Excel"/>
+            <class name="com.nopcommerce.account.Level_30_Test_Not_Dependencies"/>
         </classes>
     </test>
 
