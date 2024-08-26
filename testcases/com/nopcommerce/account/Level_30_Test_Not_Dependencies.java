@@ -1,6 +1,5 @@
 package com.nopcommerce.account;
 
-import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +9,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.user.HomePageObject;
 import pageObjects.user.SearchPageObject;
-import reportConfig.ExtentTestManagerV5;
-
-import java.lang.reflect.Method;
 
 
 public class Level_30_Test_Not_Dependencies extends BaseTest {
