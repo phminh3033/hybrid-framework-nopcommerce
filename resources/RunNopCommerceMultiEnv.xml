@@ -4,13 +4,13 @@
     <listeners>
         <listener class-name="commons.MethodListener"/>
     </listeners>
-    
+
     <parameter name="server" value="dev"></parameter>
-    
+
     <test name="Run on Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.nopcommerce.account.Level_31_Multiple_Env_01"/>
+            <class name="com.nopcommerce.account.Level_31_Multiple_Env_04_Owner"/>
         </classes>
     </test>
 </suite>
