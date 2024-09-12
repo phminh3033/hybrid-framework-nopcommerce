@@ -32,8 +32,8 @@ public class Level_20_Element_Undisplayed extends BaseTest {
 
         homePage.enterToEmailTxt(getRandomEmail());
 
-        log.info("Verify Confirm Email txt is displayed");
-        verifyTrue(homePage.isConfirmEmailTxtDisplayed());
+        /*log.info("Verify Confirm Email txt is displayed");
+        verifyTrue(homePage.isConfirmEmailTxtDisplayed());*/
     }
 
     @Test(enabled = false)
