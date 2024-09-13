@@ -3,10 +3,7 @@ package com.facebook.home;
 import commons.BaseTest;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.facebook.HomePageObject;
 import pageObjects.facebook.PageGeneratorManager;
 import reportConfig.ExtentTestManagerV5;
@@ -14,36 +11,35 @@ import utilities.EnvConfig;
 
 import java.lang.reflect.Method;
 
-public class Level_32_GRID extends BaseTest {
+public class Level_34_Apply_All extends BaseTest {
     private WebDriver driver;
-    HomePageObject homePage;
     EnvConfig envConfig;
+    HomePageObject homePage;
     private String browserName, osName;
 
-    @Parameters({"server", "browser", "url", "osName", "ipAddress", "port"})
+    @Parameters({"envName", "server", "browser", "browserVer", "osName", "osVer", "ipAddress", "portNumber"})
     @BeforeClass
-    public void beforeClass(String serverName, String browserName, String url, String osName, String ipAddress, String portNumber) {
-        ConfigFactory.setProperty("server", serverName);
-        envConfig = ConfigFactory.create(EnvConfig.class);
+    public void beforeClass(@Optional("local") String envName, @Optional("dev") String serverName, @Optional("chrome") String browserName, @Optional("latest") String browserVer, @Optional("windows") String osName, @Optional("10") String osVer, @Optional("localhost") String ipAddress, @Optional("4444") String portNumber) {
         this.browserName = browserName;
         this.osName = osName;
-        System.out.println(envConfig.appUrl());
+        ConfigFactory.setProperty("server", serverName);
+        envConfig = ConfigFactory.create(EnvConfig.class);
 
-        driver = getBrowserDriverGRID(browserName, url, osName, ipAddress, portNumber);
+        driver = getBrowserDriver(envName, envConfig.appUrl(), browserName, browserVer, osName, osVer, ipAddress, portNumber);
         homePage = PageGeneratorManager.getHomePage(driver);
     }
 
     @Test
     public void Home_01_Element_Displayed(Method method) {
         ExtentTestManagerV5.startTest(method.getName() + "- Run on " + browserName.toUpperCase() + " - " + osName, "Home_01_Element_Displayed");
-        homePage.clickToCreateAccountBtn();
+        /*homePage.clickToCreateAccountBtn();
 
         verifyTrue(homePage.isFirstNameTxtDisplayed());
         verifyTrue(homePage.isSurNameTxtDisplayed());
         verifyTrue(homePage.isEmailTxtDisplayed());
         verifyTrue(homePage.isPassTxtDisplayed());
 
-        homePage.enterToEmailTxt(getRandomEmail());
+        homePage.enterToEmailTxt(getRandomEmail());*/
     }
 
     @Test

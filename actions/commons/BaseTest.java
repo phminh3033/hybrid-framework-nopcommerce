@@ -3,6 +3,7 @@ package commons;
 /*import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;*/
 
+import factoryEnv.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -516,7 +517,7 @@ public class BaseTest {
     /**
      * Run with Selenium GRID
      */
-    protected WebDriver getBrowserDriver(String browserName, String url, String osName, String ipAddress, String portNumber) {
+    protected WebDriver getBrowserDriverGRID(String browserName, String url, String osName, String ipAddress, String portNumber) {
         if (osName.toLowerCase().contains("windows")) {
             platform = Platform.WINDOWS;
         } else if (osName.toLowerCase().contains("mac")) {
@@ -675,6 +676,33 @@ public class BaseTest {
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    /*================Config all================*/
+    protected WebDriver getBrowserDriver(String envName, String url, String browserName, String browserVer, String osName, String osVer, String ipAddress, String portNumber) {
+        switch (envName) {
+            case "local":
+                driver = new LocalFactory(browserName).createDriver();
+                break;
+            case "grid":
+                driver = new GridFactory(browserName, osName, ipAddress, portNumber).createDriver();
+                break;
+            case "browserstack":
+                driver = new BrowserstackFactory(browserName, osName, osVer).createDriver();
+                break;
+            case "saucelabs":
+                driver = new SoucelabsFactory(browserName, browserVer, osName).createDriver();
+                break;
+            case "bitbar":
+                driver = new BitBarFactory(browserName, osName, osVer).createDriver();
+                break;
+            default:
+                throw new RuntimeException("Environment name is not valid!"); // throw: dung de bat loi
+        }
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
         driver.manage().window().maximize();
         driver.get(url);
         return driver;

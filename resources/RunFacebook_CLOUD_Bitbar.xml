@@ -8,23 +8,24 @@
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
 
-    <parameter name="url" value="https://www.facebook.com/"/>
+    <parameter name="envName" value="bitbar"/>
+    <parameter name="server" value="live"/>
 
     <test name="Run on Chrome - Windows">
         <parameter name="browser" value="chrome"/>
         <parameter name="osName" value="windows"/>
         <parameter name="osVer" value="10"/>
         <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BitBar"/>
+            <class name="com.facebook.home.Level_34_Apply_All"/>
         </classes>
     </test>
 
-    <test name="Run on Firefox - Linux">
+    <!--<test name="Run on Firefox - Linux">
         <parameter name="browser" value="firefox"/>
         <parameter name="osName" value="Linux"/>
         <parameter name="osVer" value="18.04"/>
         <classes>
             <class name="com.facebook.home.Level_33_CLOUD_BitBar"/>
         </classes>
-    </test>
+    </test>-->
 </suite>

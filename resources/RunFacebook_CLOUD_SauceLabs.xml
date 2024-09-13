@@ -8,32 +8,33 @@
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
 
-    <parameter name="url" value="https://www.facebook.com/"/>
+    <parameter name="envName" value="saucelabs"/>
+    <parameter name="server" value="live"/>
 
-    <test name="Run on Chrome - Windows">
+    <!--<test name="Run on Chrome - Windows">
         <parameter name="browser" value="chrome"/>
         <parameter name="browserVer" value="latest"/>
         <parameter name="osName" value="Windows 10"/>
         <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
+            <class name="com.facebook.home.Level_34_Apply_All"/>
         </classes>
-    </test>
+    </test>-->
 
-    <test name="Run on Chrome - MAC">
+    <!--<test name="Run on Chrome - MAC">
         <parameter name="browser" value="chrome"/>
         <parameter name="browserVer" value="latest"/>
         <parameter name="osName" value="macOS 13"/>
         <classes>
             <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
         </classes>
-    </test>
+    </test>-->
 
     <test name="Run on Chrome - Linux">
         <parameter name="browser" value="chrome"/>
         <parameter name="browserVer" value="latest"/>
         <parameter name="osName" value="Linux"/>
         <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
+            <class name="com.facebook.home.Level_34_Apply_All"/>
         </classes>
     </test>
 </suite>

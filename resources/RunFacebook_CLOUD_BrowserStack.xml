@@ -8,32 +8,15 @@
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
 
-    <parameter name="url" value="https://www.facebook.com/"/>
+    <parameter name="envName" value="browserstack"/>
+    <parameter name="server" value="live"/>
 
-    <test name="Run on Chrome - Windows">
+    <!--<test name="Run on Chrome - Windows">
         <parameter name="browser" value="chrome"/>
         <parameter name="osName" value="windows"/>
         <parameter name="osVer" value="10"/>
         <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
-        </classes>
-    </test>
-
-<!--    <test name="Run on Firefox - Windows">
-        <parameter name="browser" value="Firefox"/>
-        <parameter name="osName" value="windows"/>
-        <parameter name="osVer" value="10"/>
-        <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
-        </classes>
-    </test>
-
-    <test name="Run on Edge - Windows">
-        <parameter name="browser" value="Edge"/>
-        <parameter name="osName" value="windows"/>
-        <parameter name="osVer" value="10"/>
-        <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
+            <class name="com.facebook.home.Level_34_Apply_All"/>
         </classes>
     </test>-->
 
@@ -42,25 +25,7 @@
         <parameter name="osName" value="OS X"/>
         <parameter name="osVer" value="Sonoma"/>
         <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
+            <class name="com.facebook.home.Level_34_Apply_All"/>
         </classes>
     </test>
-
-<!--    <test name="Run on Firefox - MAC">
-        <parameter name="browser" value="Firefox"/>
-        <parameter name="osName" value="OS X"/>
-        <parameter name="osVer" value="Sonoma"/>
-        <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
-        </classes>
-    </test>
-
-    <test name="Run on Edge - MAC">
-        <parameter name="browser" value="Edge"/>
-        <parameter name="osName" value="OS X"/>
-        <parameter name="osVer" value="Sonoma"/>
-        <classes>
-            <class name="com.facebook.home.Level_33_CLOUD_BrowserStack"/>
-        </classes>
-    </test>-->
 </suite>
