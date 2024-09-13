@@ -513,7 +513,9 @@ public class BaseTest {
         return driver;
     }
 
-    /** Run with Selenium GRID */
+    /**
+     * Run with Selenium GRID
+     */
     protected WebDriver getBrowserDriver(String browserName, String url, String osName, String ipAddress, String portNumber) {
         if (osName.toLowerCase().contains("windows")) {
             platform = Platform.WINDOWS;
@@ -552,6 +554,122 @@ public class BaseTest {
 
         try {
             driver = new RemoteWebDriver(new URL(String.format("http://%s:%s/", ipAddress, portNumber)), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    /**
+     * Run with CLOUD
+     */
+
+    /*================BrowserStack================*/
+    protected WebDriver getBrowserDriverBrowserStack(String browserName, String url, String osName, String osVer) {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+        capabilities.setCapability("browserName", browserName);
+        bstackOptions.put("os", osName);
+        bstackOptions.put("osVersion", osVer);
+        bstackOptions.put("browserVersion", "latest");
+        /*bstackOptions.put("userName", "minhpham_CVw30P");
+        bstackOptions.put("accessKey", "Y6enyZBKLZqDpAK63svF");
+        bstackOptions.put("consoleLogs", "info");*/
+        bstackOptions.put("sessionName", "Run on " + osName + " " + osVer + " with " + browserName);
+        bstackOptions.put("projectName", "AutoTestFacebookCloud");
+        bstackOptions.put("debug", "true");
+        capabilities.setCapability("bstack:options", bstackOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSERSTACK_URL), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    /*================SauceLabs================*/
+    protected WebDriver getBrowserDriverSauceLabs(String browserName, String browserVer, String url, String osName) {
+        MutableCapabilities capabilities = null;
+
+        switch (browserName) {
+            case "firefox":
+                FirefoxOptions fOptions = new FirefoxOptions();
+                fOptions.setPlatformName(osName);
+                fOptions.setBrowserVersion(browserVer);
+                fOptions.setImplicitWaitTimeout(Duration.ofSeconds(5));
+                capabilities = fOptions;
+                break;
+            case "chrome":
+                ChromeOptions cOptions = new ChromeOptions();
+                cOptions.setPlatformName(osName);
+                cOptions.setBrowserVersion(browserVer);
+                cOptions.setImplicitWaitTimeout(Duration.ofSeconds(5));
+                capabilities = cOptions;
+                break;
+            case "edge":
+                EdgeOptions eOptions = new EdgeOptions();
+                eOptions.setPlatformName(osName);
+                eOptions.setBrowserVersion(browserVer);
+                eOptions.setImplicitWaitTimeout(Duration.ofSeconds(5));
+                capabilities = eOptions;
+                break;
+            case "safari":
+                SafariOptions sOptions = new SafariOptions();
+                sOptions.setPlatformName(osName);
+                sOptions.setBrowserVersion(browserVer);
+                sOptions.setImplicitWaitTimeout(Duration.ofSeconds(5));
+                capabilities = sOptions;
+                break;
+            default:
+                throw new RuntimeException("Browser is not valid!");
+        }
+
+        Map<String, Object> sauceOptions = new HashMap<>();
+        sauceOptions.put("username", GlobalConstants.SAUCELABS_USERNAME);
+        sauceOptions.put("accessKey", GlobalConstants.SAUCELABS_ACCESS_KEY);
+        sauceOptions.put("build", "auto-course-build");
+        sauceOptions.put("name", "Run on " + osName + " with " + browserName + " " + browserVer);
+        capabilities.setCapability("sauce:options", sauceOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCELABS_URL), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    /*================BitBar SmartBear================*/
+    protected WebDriver getBrowserDriverBitBar(String browserName, String url, String osName, String osVer) {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        capabilities.setCapability("platformName", osName);
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("browserVersion", "latest");
+
+        HashMap<String, String> bitbarOptions = new HashMap<String, String>();
+        bitbarOptions.put("project", "Auto Course Facebook");
+        bitbarOptions.put("testrun", "Run on " + osName + " " + osVer + " with " + browserName);
+        bitbarOptions.put("apiKey", GlobalConstants.BITBAR_ACCESS_KEY);
+        bitbarOptions.put("osVersion", osVer);
+        bitbarOptions.put("resolution", "1920x1080");
+        bitbarOptions.put("seleniumVersion", "4");
+        capabilities.setCapability("bitbar:options", bitbarOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BITBAR_URL), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

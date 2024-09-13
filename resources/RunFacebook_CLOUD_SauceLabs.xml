@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Facebook Web">
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfig.ExtentTestListenerV5"/>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+
+    <parameter name="url" value="https://www.facebook.com/"/>
+
+    <test name="Run on Chrome - Windows">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVer" value="latest"/>
+        <parameter name="osName" value="Windows 10"/>
+        <classes>
+            <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
+        </classes>
+    </test>
+
+    <test name="Run on Chrome - MAC">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVer" value="latest"/>
+        <parameter name="osName" value="macOS 13"/>
+        <classes>
+            <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
+        </classes>
+    </test>
+
+    <test name="Run on Chrome - Linux">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVer" value="latest"/>
+        <parameter name="osName" value="Linux"/>
+        <classes>
+            <class name="com.facebook.home.Level_33_CLOUD_SauceLabs"/>
+        </classes>
+    </test>
+</suite>

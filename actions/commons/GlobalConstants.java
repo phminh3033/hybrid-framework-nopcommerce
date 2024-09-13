@@ -36,4 +36,18 @@ public class GlobalConstants {
 
     public static final String ORANGE_HRM_ADMIN_USERNAME = "autofczyy";
     public static final String ORANGE_HRM_ADMIN_PASSWORD = "M3gf46@#4$df";
+
+    /**BrowserStack Config*/
+    public static final String BROWSERSTACK_USERNAME = "minhpham_CVw30P";
+    public static final String BROWSERSTACK_ACCESS_KEY = "Y6enyZBKLZqDpAK63svF";
+    public static final String BROWSERSTACK_URL = "https://" + BROWSERSTACK_USERNAME + ":" + BROWSERSTACK_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
+    /**SauceLabs Config*/
+    public static final String SAUCELABS_USERNAME = "oauth-phminh3033-5a2d7";
+    public static final String SAUCELABS_ACCESS_KEY = "fb39905a-d017-4966-a04b-5b224ed8bff1";
+    public static final String SAUCELABS_URL = "https://" + BROWSERSTACK_USERNAME + ":" + BROWSERSTACK_ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+
+    /**BitBar Config*/
+    public static final String BITBAR_ACCESS_KEY = "qvl3873VDAtdu1cZhvibkRJ34gMdxfJ3";
+    public static final String BITBAR_URL = "https://eu-desktop-hub.bitbar.com/wd/hub";
 }
