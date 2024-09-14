@@ -32,14 +32,14 @@ public class Level_34_Apply_All extends BaseTest {
     @Test
     public void Home_01_Element_Displayed(Method method) {
         ExtentTestManagerV5.startTest(method.getName() + "- Run on " + browserName.toUpperCase() + " - " + osName, "Home_01_Element_Displayed");
-        /*homePage.clickToCreateAccountBtn();
+        homePage.clickToCreateAccountBtn();
 
         verifyTrue(homePage.isFirstNameTxtDisplayed());
         verifyTrue(homePage.isSurNameTxtDisplayed());
         verifyTrue(homePage.isEmailTxtDisplayed());
         verifyTrue(homePage.isPassTxtDisplayed());
 
-        homePage.enterToEmailTxt(getRandomEmail());*/
+        homePage.enterToEmailTxt(getRandomEmail());
     }
 
     @Test

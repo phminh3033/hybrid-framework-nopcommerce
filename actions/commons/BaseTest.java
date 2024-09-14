@@ -3,6 +3,7 @@ package commons;
 /*import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;*/
 
+import browserFactory.BrowserList;
 import factoryEnv.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

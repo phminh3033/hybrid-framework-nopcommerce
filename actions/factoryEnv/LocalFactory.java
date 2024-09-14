@@ -1,6 +1,10 @@
 package factoryEnv;
 
-import commons.BrowserList;
+import browserFactory.BrowserNotSupportedException;
+import browserFactory.ChromeDriverManager;
+import browserFactory.EdgeDriverManager;
+import browserFactory.FirefoxDriverManager;
+import browserFactory.BrowserList;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -16,7 +20,7 @@ public class LocalFactory {
 
     public WebDriver createDriver(){
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
-        switch (browser) {
+        /*switch (browser) {
             case FIREFOX:
                 driver = new FirefoxDriver();
                 break;
@@ -28,6 +32,21 @@ public class LocalFactory {
                 break;
             default:
                 throw new RuntimeException("Browser name is not valid");
+        }*/
+
+        /**Get Browser Driver with Capabilities*/
+        switch (browser) {
+            case FIREFOX:
+                driver = new FirefoxDriverManager().getBrowserDriver();
+                break;
+            case CHROME:
+                driver = new ChromeDriverManager().getBrowserDriver();
+                break;
+            case EDGE:
+                driver = new EdgeDriverManager().getBrowserDriver();
+                break;
+            default:
+                throw new BrowserNotSupportedException(browserName);
         }
         return driver;
     }

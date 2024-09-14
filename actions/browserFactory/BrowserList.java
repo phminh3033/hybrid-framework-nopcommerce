@@ -1,4 +1,4 @@
-package commons;
+package browserFactory;
 
 public enum BrowserList {
     CHROME, FIREFOX, EDGE, CHROME_HEADLESS, FIREFOX_HEADLESS, EDGE_HEADLESS, FIREFOX_EXTENSION, CHROME_EXTENSION, EDGE_EXTENSION;
